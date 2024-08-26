@@ -1,0 +1,12 @@
+a[mat-list-item] {
+
+    span[matListItemTitle], mat-icon {
+        transition: color 0.3s ease;
+      }
+
+    &:hover {
+      span[matListItemTitle], mat-icon{
+        color: #EB5E28;
+      }
+    }
+  }
