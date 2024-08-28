@@ -19,6 +19,6 @@ export const menuItem: MenuItem[] = [
   {
     icon: 'comment',
     label: 'Comments',
-    route: 'commments',
+    route: 'comments',
   }
 ]

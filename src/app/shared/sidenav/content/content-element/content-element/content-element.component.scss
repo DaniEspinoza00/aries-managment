@@ -10,3 +10,12 @@ a[mat-list-item] {
       }
     }
   }
+
+  .active-link span {
+    color: #EB5E28 !important; /* Cambia el color del texto */
+  }
+  
+  .active-link mat-icon {
+    color: #EB5E28 !important; /* Cambia el color del icono si es necesario */
+  }
+

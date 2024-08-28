@@ -1,4 +1,7 @@
 <app-navbar (toggleSidenav)="onToggleSidenav($event)"></app-navbar><!-- 2- catches the emit -->
-<app-sidenav [collapsed]="isSidenavCollapsed"></app-sidenav><!-- 4- send the new value -->
-<router-outlet></router-outlet>
+<div class="contenedor">
+    <app-sidenav [collapsed]="isSidenavCollapsed"></app-sidenav><!-- 4- send the new value -->
+    <router-outlet></router-outlet>
+</div>
+
 

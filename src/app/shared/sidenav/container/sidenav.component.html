@@ -1,7 +1,6 @@
 <mat-sidenav-container>
     <mat-sidenav opened mode="side" [style.width]="sidenavWidth()">
-        <app-sidenav-content></app-sidenav-content>
+        <app-sidenav-content [collapseImg]="collapseImg"></app-sidenav-content>
     </mat-sidenav>
-
-    <mat-sidenav-content class="content"> </mat-sidenav-content>
+    <mat-sidenav-content class="content" [style.margin-left]="sidenavWidth()"></mat-sidenav-content>
 </mat-sidenav-container>

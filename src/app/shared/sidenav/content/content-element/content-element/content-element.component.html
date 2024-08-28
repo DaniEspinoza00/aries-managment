@@ -1,4 +1,4 @@
-<a mat-list-item>
+<a mat-list-item [routerLink]="menuItemsElement.route" routerLinkActive="active-link" #rla="routerLinkActive" [activated]="rla.isActive">
     <mat-icon matListItemIcon>{{ menuItemsElement.icon }}</mat-icon>
     <span matListItemTitle>{{ menuItemsElement.label }}</span>
 </a>

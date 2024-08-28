@@ -2,5 +2,8 @@
     <button mat-icon-button (click)="toggle()">
         <mat-icon>menu</mat-icon>
     </button>
-    <img class="logo" src="./assets/images/aries-logo-navbar.png" alt=""  height="30">
+    <a [routerLink]="'home'">
+        <img class="logo" src="./assets/images/aries-logo-navbar.png" alt=""  height="30">
+    </a>
+    
 </mat-toolbar>

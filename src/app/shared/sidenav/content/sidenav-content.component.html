@@ -1,9 +1,12 @@
 <div class="sidenav-header">
-    <img width="100" height="100" src="/assets/images/profile-2.jpg" alt="">
-    <div class="header-text">
+    <img [width]="profilePicSize()" [height]="profilePicSize()" src="/assets/images/profile-2.jpg" alt="">
+    @if(!isCollapsed){
+        <div class="header-text">
         <h2>Your Channel</h2>
         <p>Dani Espinoza</p>
     </div>
+    }
+    
 </div>
 <mat-nav-list>
     @for (menuItemsElement of menuItems; track $index) {
