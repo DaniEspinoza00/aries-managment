@@ -1,12 +1,11 @@
 import { NgOptimizedImage } from '@angular/common';
 import { Component } from '@angular/core';
-import {MatButtonModule} from '@angular/material/button';
-import {MatCardModule} from '@angular/material/card';
+import { HomeCardComponent } from './home-card/home-card.component';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [NgOptimizedImage,MatButtonModule,MatCardModule],
+  imports: [NgOptimizedImage,HomeCardComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })

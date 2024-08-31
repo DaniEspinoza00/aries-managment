@@ -1,0 +1,5 @@
+@if (books$ |async; as books) {
+    @for (book of books; track book.id) {
+        <app-inventory-table [book]="book"></app-inventory-table>
+    }
+}
