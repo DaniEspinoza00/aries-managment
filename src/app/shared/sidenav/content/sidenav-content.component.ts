@@ -12,7 +12,8 @@ import { ContentElementComponent } from './content-element/content-element/conte
   styleUrl: './sidenav-content.component.scss'
 })
 export class SidenavContentComponent {
-
+  
+  menuItems = menuItem;
   private sideNavCollapsed = signal(false);
   isCollapsed = false;
 
@@ -21,7 +22,7 @@ export class SidenavContentComponent {
     this.sideNavCollapsed.set(val);
   }
 
-  menuItems = menuItem; //sidenav elements name, routes an name icons
+   //sidenav elements name, routes an name icons
 
   profilePicSize = computed(() => this.sideNavCollapsed() ? '32' : '100');
 }

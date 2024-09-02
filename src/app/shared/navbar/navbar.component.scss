@@ -2,3 +2,22 @@ mat-toolbar{
     position: relative;
     z-index: 5;
 }
+
+mat-nav-list{
+    display: flex;
+    margin-left: auto;
+}
+
+@media screen and (min-width:768px) {
+    mat-nav-list{
+        display: none;
+    }
+}
+
+@media screen and (max-width:768px) {
+    mat-toolbar{
+        >button{
+            display: none;
+        }
+    }
+}

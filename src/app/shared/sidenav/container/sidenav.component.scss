@@ -5,3 +5,9 @@ mat-sidenav-container{
 mat-sidenav, mat-sidenav-content{
     transition: all .3s ease-in-out
 }
+
+@media screen and (max-width:768px) {
+    mat-sidenav-container{
+        display: none;
+    }
+}

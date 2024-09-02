@@ -6,4 +6,9 @@
         <img class="logo" src="/assets/images/aries-logo-navbar.png" alt=""  height="30">
     </a>
     
+    <mat-nav-list>
+        @for (menuItemsElement of menuItems; track $index) {
+        <app-content-element [menuItemsElement]="menuItemsElement"></app-content-element>
+    }
+    </mat-nav-list>
 </mat-toolbar>
