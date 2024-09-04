@@ -1,3 +1,5 @@
+import { bookStock } from "./bookStock";
+
 export interface bookList {
     id: number;
     title: string;
@@ -15,4 +17,5 @@ export interface bookList {
     Quote1: string;
     Quote2: string;
     Quote3: string;
+    stockNprice?: bookStock
   }

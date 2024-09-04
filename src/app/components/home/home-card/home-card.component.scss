@@ -2,11 +2,17 @@
     gap: .5rem;
 }
 
+a{
+    text-decoration: none;
+    line-height: 1.5;
+    color: black;
+}
+
 mat-card:nth-child(odd){
-    animation: fadeDownCard 3s ease;
+    animation: fadeDownCard 2s ease;
 }
 mat-card:nth-child(even){
-    animation: fadeUpCard 3s ease;
+    animation: fadeUpCard 2s ease;
 }
 
 mat-card {
