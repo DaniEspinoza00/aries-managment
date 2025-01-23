@@ -1,4 +1,5 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { ToggleNavService } from './../../services/toggle-nav.service';
+import { Component, EventEmitter, inject, Output } from '@angular/core';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button'
 import { MatIconModule } from '@angular/material/icon'
@@ -17,13 +18,18 @@ import { menuItem } from '../../models/menu-item/MenuItem.model';
 export class NavbarComponent {
 
     menuItems = menuItem;
+    private toggleNavService = inject(ToggleNavService);
 
-    @Output() toggleSidenav = new EventEmitter<boolean>();
+    /* @Output() toggleSidenav = new EventEmitter<boolean>();
     isToggled: boolean = false;
   
     toggle(): void {
       this.isToggled = !this.isToggled;
       this.toggleSidenav.emit(this.isToggled);//1 emit a new result
-    }
+    } */
+
+    toggle():void{
+      this.toggleNavService.isToggled();
+    } 
 
 }

@@ -1,8 +1,9 @@
-import { Component, computed, Input, signal } from '@angular/core';
+import { Component, computed, inject, Input, signal } from '@angular/core';
 import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon'
 import { menuItem } from '../../../models/menu-item/MenuItem.model';
 import { ContentElementComponent } from './content-element/content-element/content-element.component';
+import { ToggleNavService } from '../../../services/toggle-nav.service';
 
 @Component({
   selector: 'app-sidenav-content',
@@ -14,7 +15,7 @@ import { ContentElementComponent } from './content-element/content-element/conte
 export class SidenavContentComponent {
   
   menuItems = menuItem;
-  private sideNavCollapsed = signal(false);
+/*   private sideNavCollapsed = signal(false);
   isCollapsed = false;
 
   @Input() set collapseImg(val: boolean) {
@@ -24,5 +25,11 @@ export class SidenavContentComponent {
 
    //sidenav elements name, routes an name icons
 
-  profilePicSize = computed(() => this.sideNavCollapsed() ? '32' : '100');
+  profilePicSize = computed(() => this.sideNavCollapsed() ? '32' : '100'); */
+
+  @Input() collapseImg!:boolean;
+
+  get imageSize(): number {
+    return this.collapseImg ? 32 : 100;
+  }
 }

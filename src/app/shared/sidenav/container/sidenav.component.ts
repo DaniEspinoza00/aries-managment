@@ -1,4 +1,5 @@
-import { Component, computed, Input, signal } from '@angular/core';
+import { ToggleNavService } from './../../../services/toggle-nav.service';
+import { Component, computed, inject, Input, signal } from '@angular/core';
 import { MatSidenavModule } from '@angular/material/sidenav'
 import { SidenavContentComponent } from '../content/sidenav-content.component';
 import { RouterOutlet } from '@angular/router';
@@ -10,7 +11,7 @@ import { RouterOutlet } from '@angular/router';
   styleUrl: './sidenav.component.scss'
 })
 export class SidenavComponent {
-  private _collapse = signal(false);  // Signal para collapsed
+/*   private _collapse = signal(false);  // Signal para collapsed
   
   collapseImg = false;
   @Input() set collapsed(value: boolean) { //5- catches the value of app.component.html
@@ -18,7 +19,14 @@ export class SidenavComponent {
     this.collapseImg=value;
   }
 
-  sidenavWidth = computed(() => this._collapse() ? '65px' : '250px');  // Usar el signal en computed
+  sidenavWidth = computed(() => this._collapse() ? '65px' : '250px');  // Usar el signal en computed */
+  
 
+  navWidth = computed(() => this.toggleNavService.isOpen() ? '65px' : '250px');
+  collapseImg = computed(() => this.toggleNavService.isOpen());
 
+  toggleNavService = inject(ToggleNavService);
+
+  constructor(){}
+   
 }

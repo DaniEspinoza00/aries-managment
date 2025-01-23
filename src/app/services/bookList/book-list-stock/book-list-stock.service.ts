@@ -1,8 +1,9 @@
+import { bookStock } from './../../../models/books/bookStock';
+import { environments } from './../../../../envrionments/environments';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, Observable, throwError } from 'rxjs';
-import { bookStock } from '../../../models/books/bookStock';
-import { environments } from '../../../../envrionments/environments';
+import { book } from '../../../models/books/book';
 
 @Injectable({
   providedIn: 'root'
@@ -14,6 +15,14 @@ export class BookListStockService {
   getBookStock():Observable<bookStock[]>{
     return this.http.get<bookStock[]>(environments.bookStock+`booklist`)
     .pipe(catchError(this.errorHandler));
+  }
+
+  putBookStock(book:book):Observable<bookStock>{
+    return this.http.put<bookStock>(environments.bookStock+'booklist/update', book,{
+      headers:{
+        'Content-Type': 'application/json'
+      }
+    });
   }
 
   private errorHandler(error:HttpErrorResponse){

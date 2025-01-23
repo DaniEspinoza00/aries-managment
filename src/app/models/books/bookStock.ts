@@ -3,6 +3,7 @@ export interface bookStock {
     price:number,
     stock:number,
     title?: string;
+    image_url?: string;
     edition?: string;
     authors?: string;
 }
