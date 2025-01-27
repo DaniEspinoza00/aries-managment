@@ -22,7 +22,6 @@ export class BooksComponent implements OnInit{
   private bookListStockService=inject(BookListStockService);
 
   ngOnInit(): void {
-    console.log("entra");
     this.getBookForked();
   }
 
@@ -41,7 +40,7 @@ export class BooksComponent implements OnInit{
               ...stock, 
               image_url:bookFoundedByID?.image_url,  
               title: bookFoundedByID?.title, 
-              edition: bookFoundedByID?.edition || "-", 
+              edition: bookFoundedByID?.edition, 
               authors:bookFoundedByID?.authors
             }
           })

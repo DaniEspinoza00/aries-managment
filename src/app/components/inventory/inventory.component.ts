@@ -20,8 +20,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 @Component({
   selector: 'app-inventory',
   standalone: true,
-  imports: [InventoryTableComponent,
-     AsyncPipe, 
+  imports: [
      MatIconModule,
      MatButtonModule,
      MatFormFieldModule, 

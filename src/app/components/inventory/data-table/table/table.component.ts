@@ -9,44 +9,42 @@ import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatSort, MatSortModule } from '@angular/material/sort';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { DataTableComponent } from '../data-table/data-table.component';
-import { User } from '../../../../models/pruebas/persona';
-import { Vehicle } from '../../../../models/pruebas/vehiculo';
-import { bookStock } from '../../../../models/books/bookStock';
+import { saleList } from '../../../../models/sales/saleList';
+import { SaleDataTableComponent } from '../sale-data-table/sale-data-table.component';
 
 @Component({
   selector: 'app-table',
   standalone: true,
-    imports: [
-       MatIconModule,
-       MatButtonModule,
-       MatFormFieldModule, 
-       MatInputModule, 
-       MatTableModule, 
-       MatSortModule, 
-       MatPaginatorModule, 
-       MatButtonModule,
-       CommonModule],
+  imports: [
+    MatIconModule,
+    MatButtonModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatTableModule,
+    MatSortModule,
+    MatPaginatorModule,
+    MatButtonModule,
+    CommonModule],
   templateUrl: './table.component.html',
   styleUrl: './table.component.scss'
 })
-export class TableComponent <T>  implements OnInit, OnChanges, AfterViewInit {
-  
+export class TableComponent<T> implements OnInit, OnChanges, AfterViewInit {
+
   displayedColumns = input.required<string[]>();
   data = input.required<T[]>();
-  
-  readonly dialog=inject(MatDialog);
+
+  readonly dialog = inject(MatDialog);
   dataSource = new MatTableDataSource<T>();
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
-  
+
   ngOnInit(): void {
-    this.dataSource.data=this.data();
-    console.log(this.data());
+    this.dataSource.data = this.data();
   }
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
-    this.dataSource.sort=this.sort;
+    this.dataSource.sort = this.sort;
   }
 
   ngOnChanges() {
@@ -62,13 +60,28 @@ export class TableComponent <T>  implements OnInit, OnChanges, AfterViewInit {
     }
   }
 
-  openDialog(data:T,enterAnimationDuration: string, exitAnimationDuration: string): void {
-    this.dialog.open(DataTableComponent, {
-      width: '600px',
-      data:data,
-      enterAnimationDuration,
-      exitAnimationDuration,
-      disableClose:true
-    });
+  isSale(data: any): data is saleList {
+    return (data as saleList).id_batch !== undefined && (data as saleList).totalPrice !== undefined;
+  }
+
+  openDialog(data: T, enterAnimationDuration: string, exitAnimationDuration: string): void {
+    if (this.isSale(data)) {
+      this.dialog.open(SaleDataTableComponent, {
+        width: '600px',
+        data: data.id_batch,
+        enterAnimationDuration,
+        exitAnimationDuration,
+        disableClose: true
+      });
+    }else{
+      this.dialog.open(DataTableComponent, {
+        width: '600px',
+        data: data,
+        enterAnimationDuration,
+        exitAnimationDuration,
+        disableClose: true
+      });
+    }
+
   }
 }

@@ -1,15 +1,38 @@
-
-<button mat-raised-button color="primary" (click)="closeDialog()">Cerrar</button>
-
-<table mat-table [dataSource]="dataSource">
-      
-    @for (column of displayedColumns; track $index) {
-    <ng-container [matColumnDef]="column">
-      <th mat-header-cell *matHeaderCellDef> {{column}} </th>
-      <td mat-cell *matCellDef="let element">{{element[column]}}</td>
-    </ng-container>
+<h2 style="text-align:center;">Detalle {{title}}</h2>
+<mat-dialog-content>
+  <div class="d-flex justify-content-between">
+    @if (bookImage) {
+    <img [src]="bookImage" alt="bookImage" width="120">
     }
-    
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr><!-- () porque es una signal -->
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-  </table>
+    <div class="container">
+      <div class="mat-elevation-z8">
+        <table mat-table [dataSource]="dataSource">
+          @for (column of displayedColumns; track $index) {
+          <ng-container [matColumnDef]="column">
+            @if (column==="image_url") {
+            <th mat-header-cell *matHeaderCellDef> {{column}} </th>
+            <td mat-cell *matCellDef="let element"><img [src]="element[column]" width="120"></td>
+            }@else {
+            <th mat-header-cell *matHeaderCellDef> {{column}} </th>
+            <td mat-cell *matCellDef="let element">{{element[column]}}</td>
+            }
+          </ng-container>
+          }
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr><!-- () porque es una signal -->
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+        </table>
+        <mat-dialog-actions class="justify-content-center">
+          <button mat-button (click)="closeDialog()">Close</button>
+          @if (buttonAction) {
+            <button mat-button (click)="save()">Save changes</button>
+          }@else {
+            <button mat-button cdkFocusInitial (click)="edit()">Edit</button>
+          }
+          
+        </mat-dialog-actions>
+      </div>
+
+    </div>
+  </div>
+</mat-dialog-content>
